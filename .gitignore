@@ -1,0 +1,7 @@
+.project
+.settings/
+.classpath
+target
+notifications-service/target
+notifications-service/data
+*.log
