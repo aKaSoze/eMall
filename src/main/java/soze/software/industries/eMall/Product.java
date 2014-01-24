@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Product extends PersistentObject {
+public class Product extends HigherarchyObject {
 
 	public final String					name;
 
@@ -35,7 +35,7 @@ public class Product extends PersistentObject {
 
 	@Override
 	public String toString() {
-		return "Product [name=" + name + "]";
+		return name + " " + price;
 	}
 
 }

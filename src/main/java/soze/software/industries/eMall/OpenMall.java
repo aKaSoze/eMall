@@ -21,14 +21,14 @@ public class OpenMall {
 		MonetaryValue flatPriceDistortion = new MonetaryValue(BigDecimal.valueOf(-400), RON);
 		ProductGroup productGroup = new ProductGroup(user, "Laptops/Notebook", flatPriceDistortion, BigDecimal.valueOf(-3));
 
-		productGroup.products.add(rogAsus);
-		productGroup.products.add(noteBookRazer);
+		productGroup.addProduct(rogAsus);
+		productGroup.addProduct(noteBookRazer);
 
-		ProductGroup compProductGroup = new ProductGroup(user, "Computers", flatPriceDistortion, BigDecimal.valueOf(-3));
+		ProductGroup compProductGroup = new ProductGroup(user, "Computers", flatPriceDistortion, BigDecimal.valueOf(-1.5));
 		compProductGroup.childs.add(productGroup);
-		
-		System.out.println(productGroup);
-		
+
+		System.out.println(compProductGroup.toString(0L));
+
 	}
 
 }
