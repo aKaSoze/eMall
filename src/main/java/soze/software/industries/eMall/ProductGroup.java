@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ProductGroup extends HigherarchyObject {
+public class ProductGroup extends HigherarchyBranchObject {
 
 	public final String			name;
 
@@ -38,5 +38,10 @@ public class ProductGroup extends HigherarchyObject {
 		StringBuilder toStringBuilder = new StringBuilder("ProductGroup [name=").append(name).append(", flatPriceDistortion=").append(flatPriceDistortion).append(", percentagePriceDistortion=")
 				.append(percentagePriceDistortion).append("%").append("]");
 		return toStringBuilder.toString();
+	}
+
+	public MonetaryValue evaluateNetDeduction() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
