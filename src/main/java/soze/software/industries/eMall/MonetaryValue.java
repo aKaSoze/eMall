@@ -1,14 +1,12 @@
 package soze.software.industries.eMall;
 
-import java.math.BigDecimal;
-
 public class MonetaryValue {
 
-	public final BigDecimal	value;
+	public final RealNumber	value;
 
 	public final Currency	currency;
 
-	public MonetaryValue(BigDecimal value, Currency currency) {
+	public MonetaryValue(RealNumber value, Currency currency) {
 		this.value = value;
 		this.currency = currency;
 	}
@@ -16,5 +14,9 @@ public class MonetaryValue {
 	@Override
 	public String toString() {
 		return value + " " + currency;
+	}
+
+	public MonetaryValue subtract(MonetaryValue netDeduction) {
+		return new MonetaryValue(value.subtract(netDeduction.value.multiply(netDeduction.currency.getConversionRate(currency))), currency);
 	}
 }

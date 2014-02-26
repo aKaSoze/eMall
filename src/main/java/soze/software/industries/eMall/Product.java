@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
 
 public class Product extends HigherarchyObject {
 
@@ -12,9 +13,9 @@ public class Product extends HigherarchyObject {
 
 	public final MonetaryValue			price;
 
-	public final Map<String, Object>	properties	= new HashMap<>(7);
+	public final Map<String, Object>	properties			= new HashMap<>(7);
 
-	public final Set<ProductGroup>		parentProductGroups = new HashSet<>();
+	public final Set<ProductGroup>		parentProductGroups	= new HashSet<>();
 
 	public Product(Long version, Date created, User createdBy, String name, MonetaryValue price) {
 		super(version, created, createdBy);
@@ -37,10 +38,12 @@ public class Product extends HigherarchyObject {
 		return (PropertyType) properties.get(name);
 	}
 
-	public MonetaryValue getNetPrice() {
-		for(ProductGroup productGroup: parentProductGroups) {
-			MonetaryValue netDeduction = productGroup.evaluateNetDeduction();
+	public MonetaryValue getNetPrice(SortedSet<ProductGroup> inclusionRoute) {
+		MonetaryValue netPrice = price;
+		for (ProductGroup productGroup : parentProductGroups) {
+			netPrice = netPrice.subtract(productGroup.evaluateNetDeduction(netPrice));
 		}
+		return netPrice;
 	}
 
 	@Override

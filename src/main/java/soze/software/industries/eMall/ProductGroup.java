@@ -44,4 +44,9 @@ public class ProductGroup extends HigherarchyBranchObject {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public MonetaryValue evaluateNetDeduction(MonetaryValue price) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
